@@ -4,19 +4,19 @@ pipeline {
     stages {
         stage('Compile') {
             steps {
-                build job: 'java-compile-job'
+                build job: 'compiling job'
             }
         }
 
         stage('Test') {
             steps {
-                build job: 'java-test-job'
+                build job: 'testing'
             }
         }
 
         stage('Package') {
             steps {
-                build job: 'java-package-job'
+                build job: 'package job'
             }
         }
     }

@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Compile') {
+            steps {
+                build job: 'java-compile-job'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                build job: 'java-test-job'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                build job: 'java-package-job'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'CI Pipeline completed successfully'
+        }
+        failure {
+            echo 'CI Pipeline failed'
+        }
+    }
+}

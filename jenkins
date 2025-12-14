@@ -33,7 +33,15 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy with Ansible') {
+            steps {
+                sh '''
+                ansible-playbook -i ansible/deploy_docker.yml
+                '''
     }
+}
+    }
+    
 
     post {
         success {

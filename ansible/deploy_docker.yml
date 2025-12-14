@@ -1,0 +1,26 @@
+---
+- name: Deploy XYZ Technologies App using Docker
+  hosts: localhost
+  connection: local
+  become: true
+
+  tasks:
+    - name: Stop existing container if running
+      community.docker.docker_container:
+        name: xyzapp
+        state: absent
+      ignore_errors: yes
+
+    - name: Pull Docker image from Docker Hub
+      community.docker.docker_image:
+        name: mahoro01/xyztechnologies
+        tag: "1.0"
+        source: pull
+
+    - name: Run Docker container
+      community.docker.docker_container:
+        name: xyzapp
+        image: mahoro01/xyztechnologies:1.0
+        state: started
+        ports:
+          - "8080:8080"

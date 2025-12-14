@@ -19,6 +19,13 @@ pipeline {
                 build job: 'package job'
             }
         }
+        stage('Docker Build') {
+            steps {
+                sh '''
+                docker build -t mahoro01/xyztechnologies:1.0 .
+                '''
+            }
+        }
     }
 
     post {

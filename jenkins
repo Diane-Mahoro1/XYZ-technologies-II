@@ -20,7 +20,8 @@ pipeline {
         stage('Package') {
             steps {
                 sh '''
-                clean package
+                mvn -version 
+                mvn clean package
                 '''
             }
         }

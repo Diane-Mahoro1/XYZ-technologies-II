@@ -36,7 +36,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 sh '''
-                ansible-playbook -i ansible/deploy_docker.yml
+                ansible-playbook ansible/deploy_docker.yml
                 '''
     }
 }

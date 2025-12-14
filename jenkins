@@ -13,12 +13,14 @@ pipeline {
                 build job: 'testing'
             }
         }
-
         stage('Package') {
             steps {
-                build job: 'package job'
+                sh '''
+                mvn clean package
+                '''
             }
         }
+
         stage('Docker Build') {
             steps {
                 sh '''

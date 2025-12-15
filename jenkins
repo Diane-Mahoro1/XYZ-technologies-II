@@ -44,8 +44,8 @@ pipeline {
             // }
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
-                    withDockerRegistry([credentialsId: "mahoro01", url: ""]) {
-                        sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'
+                    withDockerRegistry([credentialsId: 'dockerhub-credentials', url: 'https://index.docker.io/v1/']) {
+                        sh 'docker push mahoro01/xyztechnologies:1.0'
                     }
                 }
             }

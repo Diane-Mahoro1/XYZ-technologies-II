@@ -43,10 +43,8 @@ pipeline {
             //     }
             // }
             steps {
-                steps {
-                    withDockerRegistry([credentialsId: 'dockerhub-credentials']) {
-                        sh 'docker push mahoro01/xyztechnologies:1.0'
-                    }
+                withDockerRegistry([credentialsId: 'dockerhub-credentials']) {
+                    sh 'docker push mahoro01/xyztechnologies:1.0'
                 }
             }
         stage('Deploy with Ansible') {

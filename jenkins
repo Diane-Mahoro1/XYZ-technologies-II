@@ -42,13 +42,13 @@ pipeline {
             //         '''
             //     }
             // }
-            
-
             steps {
                 timeout(time: 5, unit: 'MINUTES') {
                     withDockerRegistry([credentialsId: "mahoro01", url: ""]) {
                         sh 'docker push $IMAGE_NAME:$BUILD_NUMBER'
                     }
+                }
+            }
         }
         stage('Deploy with Ansible') {
             steps {
@@ -69,4 +69,3 @@ pipeline {
         }
     }
 }
-    }

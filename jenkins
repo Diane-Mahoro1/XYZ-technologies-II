@@ -46,11 +46,16 @@ pipeline {
                 sh '''
                 ansible-playbook ansible/deploy_docker.yml
                 '''
+            }
+        }
+
+    stage('Deploy to Kubernetes') {
+        steps {
+            sh 'ansible-playbook ansible/deploy_k8s.yml'
+        }
     }
-}
     }
     
-
     post {
         success {
             echo 'CI Pipeline completed successfully'

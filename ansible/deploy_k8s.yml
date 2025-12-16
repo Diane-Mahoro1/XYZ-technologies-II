@@ -1,0 +1,13 @@
+- name: Deploy XYZ app on Kubernetes
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Create deployment
+      kubernetes.core.k8s:
+        state: present
+        src: k8s/deployment.yaml
+
+    - name: Create service
+      kubernetes.core.k8s:
+        state: present
+        src: k8s/service.yaml

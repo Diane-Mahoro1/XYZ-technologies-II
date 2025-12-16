@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xyz-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xyz
+  template:
+    metadata:
+      labels:
+        app: xyz
+    spec:
+      containers:
+      - name: xyz
+        image: mahoro01/xyztechnologies:1.0
+        ports:
+        - containerPort: 8080

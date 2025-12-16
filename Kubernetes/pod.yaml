@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: xyz-pod
+spec:
+  containers:
+  - name: xyz
+    image: mahoro01/xyztechnologies:1.0
+    ports:
+    - containerPort: 8080

@@ -3,13 +3,17 @@
   connection: local
   vars:
     ansible_python_interpreter: /home/ubuntu/ansible-k8s-venv/bin/python
+    kubeconfig_path: "{{ lookup('env', 'KUBECONFIG') }}"
+
   tasks:
     - name: Create deployment
       kubernetes.core.k8s:
         state: present
+        kubeconfig: "{{ kubeconfig_path }}"
         src: k8s/deployment.yaml
 
     - name: Create service
       kubernetes.core.k8s:
         state: present
+        kubeconfig: "{{ kubeconfig_path }}"
         src: k8s/service.yaml
